@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        applicationId "com.bignerdranch.android.activitylauncher"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.jniLibs.srcDirs = ['libs']
+        main {
+            res.srcDirs =
+                    [
+                            'src/main/res/layout/widgetlayout',
+                            'src/main/res/layout/userlayout',
+                            'src/main/res/layout/schedulelayout',
+                            'src/main/res/layout/finishedlayout',
+                            'src/main/res/layout/profilelayout',
+                            'src/main/res/layout/loginlayout',
+                            'src/main/res/layout/signuplayout',
+                            'src/main/res/layout',
+                            'src/main/res'
+                    ]
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:design:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.github.youngkaaa:circleview:0.1.0'
+    compile 'com.android.support:support-v4:26.+'
+    compile 'cn.bmob.android:bmob-sdk:3.5.0'
+    testCompile 'junit:junit:4.12'
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+}
