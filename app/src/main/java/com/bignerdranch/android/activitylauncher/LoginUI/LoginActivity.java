@@ -2,6 +2,7 @@ package com.bignerdranch.android.activitylauncher.LoginUI;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.inputmethodservice.Keyboard;
 import android.os.Bundle;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
@@ -42,6 +43,15 @@ public class LoginActivity extends AppCompatActivity{
 
         mLUserName = (EditText) findViewById(R.id.loginusername);
         mLPassWord = (EditText)findViewById(R.id.loginpassword);
+        mLPassWord.setOnKeyListener(new View.OnKeyListener(){
+            public boolean onKey(View v, int keyCode, KeyEvent event){
+                if((event.getAction()==KeyEvent.ACTION_DOWN)&&(keyCode == KeyEvent.KEYCODE_ENTER)){
+                    mLoginButton.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
         mLoginButton = (Button)findViewById(R.id.loginbttn);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,9 +77,10 @@ public class LoginActivity extends AppCompatActivity{
                             Toast toast = Toast.makeText(LoginActivity.this,"登陆成功",Toast.LENGTH_LONG);
                             toast.setGravity(Gravity.TOP , 0, 50);
                             toast.show();
+                            finish();
                             Intent intent = new Intent(LoginActivity.this,UserActivity.class);
                             startActivity(intent);
-                            finish();
+
                         }else{
                             Toast toast = Toast.makeText(LoginActivity.this,"用户名或密码错误",Toast.LENGTH_LONG);
                             toast.setGravity(Gravity.TOP , 0, 50);
@@ -91,13 +102,4 @@ public class LoginActivity extends AppCompatActivity{
         });
 
     }
-
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-            mLoginButton.callOnClick();
-            return true;
-        }
-        return super.dispatchKeyEvent(e);
-    };
 }

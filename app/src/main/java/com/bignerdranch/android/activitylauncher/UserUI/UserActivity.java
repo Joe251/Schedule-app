@@ -60,14 +60,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        initView();
-        //设置默认选中
-       /* navigationView.getMenu().getItem(0).setChecked(true);
-        setTitle("Schedule");
-        ScheduleFragment schedulefragment = new ScheduleFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment,schedulefragment).commit();*/
-        //设置默认选中
+        //initView();
         View headView = navigationView.inflateHeaderView(R.layout.nav_header_user);
         CircleView headPhoto = (CircleView) headView.findViewById(R.id.headImage);
         headPhoto.setOnClickListener(new View.OnClickListener() {
@@ -100,14 +93,14 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
     private String getTime() {
         return new SimpleDateFormat("MM-dd HH:mm", Locale.CHINA).format(new Date());
     }
-    @Override
+   /* @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
         if (hasFocus) {
             mListView.autoRefresh();
         }
-    }
+    }*/
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -148,17 +141,12 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_schedule) {
-            setTitle("Schedule");
+        if (id == R.id.nav_event) {
+            setTitle(R.string.event_title);
             ScheduleFragment schedulefragment = new ScheduleFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.fragment,schedulefragment).commit();
-        }else if(id == R.id.nav_finished){
-            setTitle("Finished");
-            FinshedFragment finishedfragment = new FinshedFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.fragment,finishedfragment).commit();
-        } else if (id == R.id.nav_share) {
+        }else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 

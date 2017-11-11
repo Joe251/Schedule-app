@@ -2,10 +2,12 @@ package com.bignerdranch.android.activitylauncher.SignUpUI;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 import com.bignerdranch.android.activitylauncher.R;
 import com.bignerdranch.android.activitylauncher.Class.User;
@@ -31,6 +33,15 @@ public class SignUpActivity extends AppCompatActivity {
         setTitle("Sign Up");
         mSEmail = (EditText) findViewById(R.id.signupemail);
         mSAge = (EditText) findViewById(R.id.signupage);
+        mSAge.setOnKeyListener(new View.OnKeyListener(){
+            public boolean onKey(View v, int keyCode, KeyEvent event){
+                if((event.getAction()==KeyEvent.ACTION_DOWN)&&(keyCode == KeyEvent.KEYCODE_ENTER)){
+                    mSignUpButton.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
         mSVertify = (EditText) findViewById(R.id.signupvertify);
         mSUserName = (EditText) findViewById(R.id.signupusername);
         mSPassword = (EditText) findViewById(R.id.signuppassword);

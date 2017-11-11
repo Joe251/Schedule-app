@@ -6,7 +6,14 @@
     <string name="action_sign_out">Sign out</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>\
     <string name="user_interface">UserActivity</string>
-
+    <string name="username_hint">Username</string>
+    <string name="userpassword_hint">Password</string>
+    <string name="uservertify_hint">Vertify password</string>
+    <string name="useremail_hint">Email</string>
+    <string name="userage_hint">Age</string>
+    <string name="login_button">Login</string>
+    <string name="signup_button">Sign up</string>
+    <string name="event_title">Event</string>
     <string name="header_hint_refresh_normal">Pull to refresh</string>
     <string name="header_hint_refresh_ready">Release to refresh</string>
     <string name="header_hint_refresh_loading">Refreshing&#8230;</string>
